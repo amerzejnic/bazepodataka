@@ -1,0 +1,421 @@
+CREATE TABLE Ucionice (
+    Sifra INT PRIMARY KEY AUTO_INCREMENT,
+    NazivOpis VARCHAR(255) NOT NULL,
+    Sprat INT NOT NULL,
+    DetaljnijaLokacija VARCHAR(255),
+    BrojMjesta INT NOT NULL,
+    Ozvucenje TINYINT DEFAULT 0,
+    Projektor TINYINT DEFAULT 0,
+    Tabla TINYINT DEFAULT 0
+);
+
+INSERT INTO Ucionice (NazivOpis, Sprat, DetaljnijaLokacija, BrojMjesta, Ozvucenje, Projektor, Tabla)
+VALUES ('ABG', 1, 'Glavna zgrada', 200, 1, 1, 1);
+
+INSERT INTO Ucionice (NazivOpis, Sprat, DetaljnijaLokacija, BrojMjesta, Ozvucenje, Projektor, Tabla)
+VALUES ('Učionica 419', 4, 'Glavna zgrada', 60, 0, 1, 1);
+
+INSERT INTO Ucionice (NazivOpis, Sprat, DetaljnijaLokacija, BrojMjesta, Ozvucenje, Projektor, Tabla)
+VALUES ('Učionica 432', 4, 'Glavna zgrada', 50, 0, 1, 1);
+
+INSERT INTO Ucionice (NazivOpis, Sprat, DetaljnijaLokacija, BrojMjesta, Ozvucenje, Projektor, Tabla)
+VALUES ('Učionica 428', 4, 'Glavna zgrada', 60, 0, 1, 1);
+
+INSERT INTO Ucionice (NazivOpis, Sprat, DetaljnijaLokacija, BrojMjesta, Ozvucenje, Projektor, Tabla)
+VALUES ('RC', 4, 'Glavna zgrada', 75, 1, 1, 1);
+
+INSERT INTO Ucionice (NazivOpis, Sprat, DetaljnijaLokacija, BrojMjesta, Ozvucenje, Projektor, Tabla)
+VALUES ('VRC', 1, 'Glavna zgrada', 90, 1, 1, 1);
+
+CREATE TABLE Predmeti (
+    SifraPredmeta VARCHAR(10) PRIMARY KEY,
+    Naziv VARCHAR(255) NOT NULL,
+    Opis TEXT
+);
+INSERT INTO Predmeti (SifraPredmeta, Naziv, Opis)
+VALUES ('Mat', 'Matematika IT', 'Jednosemestralni kurs iz matematike');
+
+INSERT INTO Predmeti (SifraPredmeta, Naziv, Opis)
+VALUES ('Web', 'Web programiranje 1', 'Osnove web tehnologija');
+
+INSERT INTO Predmeti (SifraPredmeta, Naziv, Opis)
+VALUES ('P1', 'Programiranje 1', 'Phyton ');
+
+INSERT INTO Predmeti (SifraPredmeta, Naziv, Opis)
+VALUES ('RaS', 'Racunarski sistemi', 'Racunarska logika');
+
+INSERT INTO Predmeti (SifraPredmeta, Naziv, Opis)
+VALUES ('BP', 'Baze podataka', 'MySQL');
+
+INSERT INTO Predmeti (SifraPredmeta, Naziv, Opis)
+VALUES ('LAAG', 'Linearna algebra i analiticka geometrija', 'Matrice i determinante');
+
+INSERT INTO Predmeti (SifraPredmeta, Naziv, Opis)
+VALUES ('AIS', 'Algoritmi i strukture podataka', 'Slozenost izvrsavanja programa');
+
+INSERT INTO Predmeti (SifraPredmeta, Naziv, Opis)
+VALUES ('OPIT', 'Odabrana podrucja informacionih tehnologija', 'Webstorm');
+
+
+
+CREATE TABLE Aktivnosti (
+   SifraAktivnosti INT PRIMARY KEY AUTO_INCREMENT,
+   VrstaAktivnosti ENUM('Predavanje', 'Vježbe', 'Laboratorijske vježbe', 'Vannastavna aktivnost') NOT NULL,
+   NazivAktivnosti VARCHAR(255) NOT NULL,
+   NazivVannastavneAktivnosti VARCHAR(255)
+);
+
+
+INSERT INTO Aktivnosti (VrstaAktivnosti, NazivAktivnosti, NazivVannastavneAktivnosti)
+VALUES ('Predavanje', 'Predavanja iz matematike', NULL);
+
+
+
+
+INSERT INTO Aktivnosti (VrstaAktivnosti, NazivAktivnosti, NazivVannastavneAktivnosti)
+VALUES ('Vannastavna aktivnost', 'Škola matematike', 'Natjecanje matematika');
+
+
+ALTER TABLE Ucionice
+RENAME COLUMN Sifra TO SifraUcionice;
+CREATE TABLE Fakulteti (
+    SifraFakulteta INT PRIMARY KEY AUTO_INCREMENT,
+    Naziv VARCHAR(255) NOT NULL,
+    Adresa VARCHAR(255) NOT NULL
+);
+INSERT INTO Fakulteti (Naziv, Adresa)
+VALUES ('Prirodno-matematicki fakultet', 'Zmaja od Bosne 33-35');
+
+INSERT INTO Fakulteti (Naziv, Adresa)
+VALUES ('Elektrotehnicki fakultet', 'Zmaja od Bosne');
+
+INSERT INTO Fakulteti (Naziv, Adresa)
+VALUES ('Ekonomski fakultet', 'Trg oslobođenja');
+
+INSERT INTO Fakulteti (Naziv, Adresa)
+VALUES ('Medicinski fakultet', 'Čekaluša 90');
+
+INSERT INTO Fakulteti (Naziv, Adresa)
+VALUES ('Gradevinski fakultet', 'Patriotske lige 30');
+
+INSERT INTO Fakulteti (Naziv, Adresa)
+VALUES ('Sumarski fakultet', 'Zagrebacka 20');
+
+INSERT INTO Fakulteti (Naziv, Adresa)
+VALUES ('Arhitektonski fakultet', 'Patriotske lige 30');
+
+INSERT INTO Fakulteti (Naziv, Adresa)
+VALUES ('Filozofski fakultet', 'Franje Račkog 1');
+
+
+INSERT INTO Predmeti (SifraPredmeta, Naziv, Opis)
+VALUES ('ANT1', 'Anatomija 1', 'Anatomija covjeka');
+
+INSERT INTO Predmeti (SifraPredmeta, Naziv, Opis)
+VALUES ('OE', 'Osnove Ekonomije', 'Osnove ekonomije');
+
+INSERT INTO Predmeti (SifraPredmeta, Naziv, Opis)
+VALUES ('PI', 'Poslovna informatika', 'Osnove poslovne informatike');
+
+INSERT INTO Predmeti (SifraPredmeta, Naziv, Opis)
+VALUES ('EJ', 'Engleski jezik', 'Engleski jezik');
+
+INSERT INTO Predmeti (SifraPredmeta, Naziv, Opis)
+VALUES ('FiS', 'Filozofija i Sociologija', 'Uvod u filozofiju i sociologiju');
+
+INSERT INTO Predmeti (SifraPredmeta, Naziv, Opis)
+VALUES ('AK1', 'Arhitektonske konstrukcije 1', 'Uvod u arhitekturu');
+
+ALTER TABLE Predmeti
+ADD COLUMN SifraFakulteta INT,
+ADD CONSTRAINT FK_Fakulteti_Predmeti
+FOREIGN KEY (SifraFakulteta) REFERENCES Fakulteti(SifraFakulteta);
+
+UPDATE Predmeti SET SifraFakulteta = 1 WHERE Sifrapredmeta = 'Mat';
+UPDATE Predmeti SET SifraFakulteta = 1 WHERE Sifrapredmeta = 'Web';
+UPDATE Predmeti SET SifraFakulteta = 1 WHERE Sifrapredmeta = 'P1';
+UPDATE Predmeti SET SifraFakulteta = 1 WHERE Sifrapredmeta = 'RaS';
+UPDATE Predmeti SET SifraFakulteta = 1 WHERE Sifrapredmeta = 'BP';
+UPDATE Predmeti SET SifraFakulteta = 1 WHERE Sifrapredmeta = 'LAAG';
+UPDATE Predmeti SET SifraFakulteta = 1 WHERE Sifrapredmeta = 'AIS';
+UPDATE Predmeti SET SifraFakulteta = 1 WHERE Sifrapredmeta = 'OPIT';
+
+UPDATE Predmeti SET SifraFakulteta = 3 WHERE Sifrapredmeta = 'OE';
+UPDATE Predmeti SET SifraFakulteta = 4 WHERE Sifrapredmeta = 'ANT1';
+UPDATE Predmeti SET SifraFakulteta = 3 WHERE Sifrapredmeta = 'PI';
+UPDATE Predmeti SET SifraFakulteta = 8 WHERE Sifrapredmeta = 'EJ';
+UPDATE Predmeti SET SifraFakulteta = 8 WHERE Sifrapredmeta = 'FiS';
+UPDATE Predmeti SET SifraFakulteta = 7 WHERE Sifrapredmeta = 'AK1';
+
+CREATE TABLE Profesori (
+    SifraProfesora INT PRIMARY KEY AUTO_INCREMENT,
+    Ime VARCHAR(255) NOT NULL,
+    Prezime VARCHAR(255) NOT NULL
+);
+
+
+INSERT INTO Profesori (Ime, Prezime) VALUES
+('Elmedin', 'Selmanovic'),
+('Adis', 'Alihodzic'),
+('Senada', 'Kalabusic'),
+('Damir','Hasic'),
+('Almasa', 'Odzak'),
+('Esmir', 'Pilav'),
+('Mirza', 'Ibrasimovic'),
+('Jelena', 'Gakovic'),
+('Kemal', 'Hajdarevic'),
+('Elvedin', 'Grabovica'),
+('Nihad', 'Cengic'),
+('Ratko', 'Knezevic');
+
+ALTER TABLE Profesori
+ADD COLUMN SifraUcionice INT,
+ADD CONSTRAINT FK_Ucionice_Profesori
+FOREIGN KEY (SifraUcionice) REFERENCES Ucionice(SifraUcionice);
+
+SELECT SifraUcionice, NazivOpis FROM Ucionice;
+
+
+UPDATE Profesori
+SET SifraUcionice = 1
+WHERE Ime = 'Elmedin';
+
+UPDATE Profesori
+SET SifraUcionice = 10
+WHERE Ime = 'Elvedin';
+
+UPDATE Profesori
+SET SifraUcionice = 9
+WHERE Ime = 'Kemal';
+
+
+INSERT INTO Ucionice (NazivOpis, Sprat, DetaljnijaLokacija, BrojMjesta, Ozvucenje, Projektor, Tabla)
+VALUES ('Učionica 307', 3, 'Ekonomski fakultet', 80, 1, 1, 1);
+
+INSERT INTO Ucionice (NazivOpis, Sprat, DetaljnijaLokacija, BrojMjesta, Ozvucenje, Projektor, Tabla)
+VALUES ('Učionica 203', 2, 'Arhitektonski fakultet', 100, 1, 0, 1);
+
+INSERT INTO Ucionice (NazivOpis, Sprat, DetaljnijaLokacija, BrojMjesta, Ozvucenje, Projektor, Tabla)
+VALUES ('Učionica 204', 2, 'Filozofski fakultet', 65, 1, 1, 1);
+
+INSERT INTO Ucionice (NazivOpis, Sprat, DetaljnijaLokacija, BrojMjesta, Ozvucenje, Projektor, Tabla)
+VALUES ('KUK', 1, 'Medicinski fakultet', 300, 1, 1, 1);
+
+CREATE TABLE Dani (
+    SifraDana INT PRIMARY KEY AUTO_INCREMENT,
+    NazivDana VARCHAR(20) NOT NULL
+);
+
+INSERT INTO Dani (NazivDana) VALUES
+('Ponedjeljak'),
+('Utorak'),
+('Srijeda'),
+('Četvrtak'),
+('Petak');
+
+INSERT INTO Dani (NazivDana) VALUES
+('Subota'),
+('Nedjelja');
+
+CREATE TABLE raspored_zaglavlje (
+    sifra INT PRIMARY KEY,
+    datum DATE,
+    opis VARCHAR(255),
+    status VARCHAR(50)
+);
+
+CREATE TABLE raspored_nastave (
+    IDRasporeda INT PRIMARY KEY AUTO_INCREMENT,
+    sifra_zaglavlja INT,
+    SifraDana INT,
+    VrijemePocetka TIME,
+    VrijemeZavrsetka TIME,
+    SifraProfesora INT,
+    SifraPredmeta VARCHAR(10),
+    SifraUcionice INT,
+    FOREIGN KEY (SifraDana) REFERENCES Dani(SifraDana),
+    FOREIGN KEY (SifraProfesora) REFERENCES Profesori(SifraProfesora),
+    FOREIGN KEY (SifraPredmeta) REFERENCES Predmeti(SifraPredmeta),
+    FOREIGN KEY (SifraUcionice) REFERENCES Ucionice(SifraUcionice),
+     FOREIGN KEY (sifra_zaglavlja) REFERENCES raspored_zaglavlje(sifra),
+    CONSTRAINT UniqueRaspored UNIQUE (SifraUcionice, SifraDana, VrijemePocetka, VrijemeZavrsetka),
+    CHECK (VrijemePocetka < VrijemeZavrsetka)
+);
+
+
+INSERT INTO raspored_zaglavlje (sifra, datum, opis, status) VALUES (1, '2023-10-03', 'Raspored nastave za zimski semestar 2023-2024', 'Aktivan');
+
+INSERT INTO raspored_nastave (sifra_zaglavlja, SifraDana, VrijemePocetka, VrijemeZavrsetka, SifraProfesora, SifraPredmeta, SifraUcionice)
+SELECT RZ.sifra, D.SifraDana, '09:00:00', '11:00:00', P.SifraProfesora, PR.SifraPredmeta, U.SifraUcionice
+FROM raspored_zaglavlje RZ
+JOIN Dani D ON D.SifraDana = 1
+JOIN Profesori P ON P.SifraProfesora = 1 
+JOIN Predmeti PR ON PR.SifraPredmeta = 'Mat' AND PR.SifraFakulteta = 1  
+JOIN Ucionice U ON U.SifraUcionice = 4 
+WHERE RZ.sifra = 1;
+
+INSERT INTO raspored_nastave (sifra_zaglavlja, SifraDana, VrijemePocetka, VrijemeZavrsetka, SifraProfesora, SifraPredmeta, SifraUcionice)
+SELECT RZ.sifra, D.SifraDana, '13:00:00', '15:00:00', P.SifraProfesora, PR.SifraPredmeta, U.SifraUcionice
+FROM raspored_zaglavlje RZ
+JOIN Dani D ON D.SifraDana = 1
+JOIN Profesori P ON P.SifraProfesora = 2
+JOIN Predmeti PR ON PR.SifraPredmeta = 'BP' AND PR.SifraFakulteta = 1  
+JOIN Ucionice U ON U.SifraUcionice = 2  
+WHERE RZ.sifra = 1;
+
+INSERT INTO raspored_nastave (sifra_zaglavlja, SifraDana, VrijemePocetka, VrijemeZavrsetka, SifraProfesora, SifraPredmeta, SifraUcionice)
+SELECT RZ.sifra, D.SifraDana, '10:00:00', '13:00:00', P.SifraProfesora, PR.SifraPredmeta, U.SifraUcionice
+FROM raspored_zaglavlje RZ
+JOIN Dani D ON D.SifraDana = 2
+JOIN Profesori P ON P.SifraProfesora = 4
+JOIN Predmeti PR ON PR.SifraPredmeta = 'OPIT' AND PR.SifraFakulteta = 1 
+JOIN Ucionice U ON U.SifraUcionice = 3  
+WHERE RZ.sifra = 1; 
+
+
+INSERT INTO raspored_nastave (sifra_zaglavlja, SifraDana, VrijemePocetka, VrijemeZavrsetka, SifraProfesora, SifraPredmeta, SifraUcionice)
+SELECT RZ.sifra, D.SifraDana, '08:00:00', '10:00:00', P.SifraProfesora, PR.SifraPredmeta, U.SifraUcionice
+FROM raspored_zaglavlje RZ
+JOIN Dani D ON D.SifraDana = 1
+JOIN Profesori P ON P.SifraProfesora = 3
+JOIN Predmeti PR ON PR.SifraPredmeta = 'LAAG' AND PR.SifraFakulteta = 1  
+JOIN Ucionice U ON U.SifraUcionice = 3 
+WHERE RZ.sifra = 1; 
+
+INSERT INTO raspored_nastave (sifra_zaglavlja, SifraDana, VrijemePocetka, VrijemeZavrsetka, SifraProfesora, SifraPredmeta, SifraUcionice)
+SELECT RZ.sifra, D.SifraDana, '13:00:00', '15:00:00', P.SifraProfesora, PR.SifraPredmeta, U.SifraUcionice
+FROM raspored_zaglavlje RZ
+JOIN Dani D ON D.SifraDana = 3
+JOIN Profesori P ON P.SifraProfesora = 6
+JOIN Predmeti PR ON PR.SifraPredmeta = 'AIS' AND PR.SifraFakulteta = 1  
+JOIN Ucionice U ON U.SifraUcionice = 5  
+WHERE RZ.sifra = 1; 
+
+INSERT INTO raspored_nastave (sifra_zaglavlja, SifraDana, VrijemePocetka, VrijemeZavrsetka, SifraProfesora, SifraPredmeta, SifraUcionice)
+SELECT RZ.sifra, D.SifraDana, '13:00:00', '15:00:00', P.SifraProfesora, PR.SifraPredmeta, U.SifraUcionice
+FROM raspored_zaglavlje RZ
+JOIN Dani D ON D.SifraDana = 4
+JOIN Profesori P ON P.SifraProfesora = 2
+JOIN Predmeti PR ON PR.SifraPredmeta = 'RaS' AND PR.SifraFakulteta = 1 
+JOIN Ucionice U ON U.SifraUcionice = 2  
+WHERE RZ.sifra = 1; 
+
+INSERT INTO raspored_nastave (sifra_zaglavlja, SifraDana, VrijemePocetka, VrijemeZavrsetka, SifraProfesora, SifraPredmeta, SifraUcionice)
+SELECT RZ.sifra, D.SifraDana, '09:00:00', '11:00:00', P.SifraProfesora, PR.SifraPredmeta, U.SifraUcionice
+FROM raspored_zaglavlje RZ
+JOIN Dani D ON D.SifraDana = 4
+JOIN Profesori P ON P.SifraProfesora = 1
+JOIN Predmeti PR ON PR.SifraPredmeta = 'Web' AND PR.SifraFakulteta = 1 
+JOIN Ucionice U ON U.SifraUcionice = 2 
+WHERE RZ.sifra = 1; 
+
+INSERT INTO raspored_nastave (sifra_zaglavlja, SifraDana, VrijemePocetka, VrijemeZavrsetka, SifraProfesora, SifraPredmeta, SifraUcionice)
+SELECT RZ.sifra, D.SifraDana, '08:00:00', '10:00:00', P.SifraProfesora, PR.SifraPredmeta, U.SifraUcionice
+FROM raspored_zaglavlje RZ
+JOIN Dani D ON D.SifraDana = 5
+JOIN Profesori P ON P.SifraProfesora = 7
+JOIN Predmeti PR ON PR.SifraPredmeta = 'P1' AND PR.SifraFakulteta = 1  
+JOIN Ucionice U ON U.SifraUcionice = 9  
+WHERE RZ.sifra = 1;
+
+//upiti
+
+SELECT
+        IDRasporeda,
+        SifraDana,
+        VrijemePocetka,
+        VrijemeZavrsetka,
+        SifraProfesora,
+        SifraPredmeta
+    FROM
+        raspored_nastave
+    WHERE
+        SifraUcionice = p_SifraUcionice;
+
+
+
+SELECT
+        Ucionice.SifraUcionice,
+        Ucionice.NazivOpis AS NazivUcionice,
+        COUNT(DISTINCT YEAR(raspored_zaglavlje.datum)) AS BrojStudijskihGodina
+    FROM
+        Ucionice
+    LEFT JOIN
+        raspored_nastave ON Ucionice.SifraUcionice = raspored_nastave.SifraUcionice
+    LEFT JOIN
+        raspored_zaglavlje ON raspored_nastave.sifra_zaglavlja = raspored_zaglavlje.sifra
+    GROUP BY
+        Ucionice.SifraUcionice
+    ORDER BY
+        BrojStudijskihGodina DESC;
+
+
+SELECT DISTINCT
+        Ucionice.NazivOpis AS NazivUcionice
+    FROM
+        raspored_nastave
+    JOIN
+        Ucionice ON raspored_nastave.SifraUcionice = Ucionice.SifraUcionice
+    WHERE
+        raspored_nastave.SifraProfesora = SifraNastavnika
+
+
+
+SELECT Fakulteti.SifraFakulteta, Fakulteti.Naziv AS NazivFakulteta,
+           Predmeti.SifraPredmeta, Predmeti.NazivPredmeta AS Naziv_Predmeta
+    FROM Fakulteti
+    JOIN Predmeti ON Fakulteti.SifraFakulteta = Predmeti.SifraFakulteta;
+
+
+  SELECT
+        Ucionice.SifraUcionice,
+        Ucionice.NazivOpis AS NazivUcionice,
+        AVG(TIME_TO_SEC(raspored_nastave.VrijemeZavrsetka - raspored_nastave.VrijemePocetka) / 3600) AS ProsjecnoZauzeceSati
+    FROM
+        Ucionice
+    LEFT JOIN
+        raspored_nastave ON Ucionice.SifraUcionice = raspored_nastave.SifraUcionice
+    GROUP BY
+        Ucionice.SifraUcionice, Ucionice.NazivOpis;
+
+
+ SELECT
+        Ucionice.SifraUcionice,
+        Ucionice.NazivOpis AS NazivUcionice,
+        YEAR(raspored_zaglavlje.datum) AS StudijskaGodina,
+        FORMAT(SUM(TIME_TO_SEC(raspored_nastave.VrijemeZavrsetka - raspored_nastave.VrijemePocetka) / 3600), 2) AS UkupnoZauzeceSati
+    FROM
+        Ucionice
+    LEFT JOIN
+        raspored_nastave ON Ucionice.SifraUcionice = raspored_nastave.SifraUcionice
+    LEFT JOIN
+        raspored_zaglavlje ON raspored_nastave.sifra_zaglavlja = raspored_zaglavlje.sifra
+    GROUP BY
+        Ucionice.SifraUcionice, StudijskaGodina;
+
+SELECT DISTINCT raspored.SifraUcionice, ucionice.NazivOpis
+    FROM raspored_nastave raspored
+    JOIN Ucionice ucionice ON raspored.SifraUcionice = ucionice.SifraUcionice
+    JOIN UcionicaiKarakteristike ON ucionice.SifraUcionice = UcionicaiKarakteristike.SifraUcionice
+    JOIN TehnickeKarakteristike ON UcionicaiKarakteristike.SifraKarakteristika = TehnickeKarakteristike.Sifra
+    WHERE TehnickeKarakteristike.Naziv = nazivKarakteristike
+      AND raspored.SifraUcionice = sifraUcionice;
+
+
+SELECT
+        raspored_nastave.IDRasporeda,
+        raspored_nastave.SifraDana,
+        raspored_nastave.VrijemePocetka,
+        raspored_nastave.VrijemeZavrsetka,
+        CONCAT(Profesori.Ime, ' ', Profesori.Prezime) AS Nastavnik,
+        Ucionice.NazivOpis AS NazivUcionice
+    FROM
+        raspored_nastave
+    JOIN
+        Predmeti ON raspored_nastave.SifraPredmeta = Predmeti.SifraPredmeta
+    JOIN
+        Profesori ON raspored_nastave.SifraProfesora = Profesori.SifraProfesora
+    JOIN
+        Ucionice ON raspored_nastave.SifraUcionice = Ucionice.SifraUcionice
+    WHERE
+        raspored_nastave.SifraPredmeta = SifraPredmeta;
